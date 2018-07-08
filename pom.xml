@@ -31,6 +31,26 @@
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
+          <groupId>external.atlassian.jgitflow</groupId>
+          <artifactId>jgitflow-maven-plugin</artifactId>
+          <version>1.0-m5.1</version>
+          <configuration>
+            <flowInitContext>
+                <masterBranchName>master</masterBranchName>
+                <developBranchName>development</developBranchName>
+                <featureBranchPrefix>feature-</featureBranchPrefix>
+                <releaseBranchPrefix>release-</releaseBranchPrefix>
+                <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+                <versionTagPrefix>version-</versionTagPrefix>
+            </flowInitContext>
+            <username>sarathp12</username>
+            <password>Iloveu_12</password>
+            <noDeploy>true</noDeploy>
+            <squash>true</squash>
+            <scmCommentPrefix>[RELEASE] </scmCommentPrefix>
+          </configuration>
+        </plugin>
+        <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
