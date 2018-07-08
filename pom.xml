@@ -6,7 +6,7 @@
   <groupId>com.test</groupId>
   <artifactId>mytest</artifactId>
   <version>1.2</version>
-
+  <version>V1.3</version>
   <name>mytest</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
@@ -16,7 +16,12 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
-
+  
+  <scm>
+	<connection>scm:git:https://github.com/sarathp12/pro-target.git</connection>
+		<tag>HEAD</tag>
+  </scm>
+ 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -29,6 +34,25 @@
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+        <plugin>
+	   <artifactId>maven-release-plugin</artifactId>
+	   <version>2.4.2</version>
+	   <configuration>
+	      <autoVersionSubmodules>true</autoVersionSubmodules>
+	      <!-- Keep changes in the local repo, push will be done afterwards -->
+	      <pushChanges>false</pushChanges>
+	      <localCheckout>true</localCheckout>
+	      <!-- Use a better name for the tag -->
+	      <tagNameFormat>v@{project.version}</tagNameFormat>
+	   </configuration>
+	   <dependencies>
+	     <dependency>
+	       	<groupId>org.apache.maven.scm</groupId>
+	        <artifactId>maven-scm-provider-gitexe</artifactId>
+		<version>1.9</version>
+	     </dependency>
+	   </dependencies>
+        </plugin>
         <plugin>
           <groupId>external.atlassian.jgitflow</groupId>
           <artifactId>jgitflow-maven-plugin</artifactId>
